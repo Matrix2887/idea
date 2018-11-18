@@ -1,0 +1,36 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:component-scan base-package="cn.gandan"></context:component-scan>
+
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+
+    <!--<aop:config>
+        <aop:aspect id="aopLogger" ref="logger">
+
+            <aop:pointcut expression="execution(* cn.gandan.service.impl.*.*(..))" id = "pt1"></aop:pointcut>
+            <aop:before method="before" pointcut-ref="pt1"></aop:before>
+
+            <aop:after-returning method="afterA" pointcut-ref="pt1"></aop:after-returning>
+
+            <aop:after-throwing method="afterB" pointcut-ref="pt1"></aop:after-throwing>
+
+            <aop:after method="afterC" pointcut-ref="pt1"></aop:after>
+            
+            <aop:around method="around" pointcut-ref="pt1"></aop:around>
+
+        </aop:aspect>
+    </aop:config>-->
+
+
+</beans>

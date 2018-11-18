@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="accountService" class="cn.gandan.service.impl.AccountServiceImpl">
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+
+
+    <bean id="accountDao" class="cn.gandan.dao.impl.AccountDaoImpl">
+        <property name="connectionUtils" ref="connectionUtils"></property>
+        <property name="runner" ref="runner"></property>
+    </bean>
+
+
+    <bean id="transactionManager" class="cn.gandan.utils.TransactionManager">
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <bean id="logger" class="cn.gandan.utils.Logger">
+        <property name="tManager" ref="transactionManager"></property>
+    </bean>
+
+
+    <aop:config>
+    <aop:pointcut expression="execution(* cn.gandan.service.impl.AccountServiceImpl.*(..))" id = "pt1"></aop:pointcut>
+        <aop:aspect id="aopLogger" ref="logger">
+            <aop:around method="around" pointcut-ref="pt1"></aop:around>
+        </aop:aspect>
+    </aop:config>
+
+<!--==================================================================================================-->
+    <!--配置QueryRunner-->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <!--注入数据源-->
+        <constructor-arg name="ds" ref="dataSource"></constructor-arg>
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--连接数据库的必备信息-->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+    <bean id="connectionUtils" class="cn.gandan.utils.ConnectionUtils">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+</beans>
