@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gandan.dao.UserDao">
+
+    <resultMap id="userMap" type="user">
+
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="birthday" column="birthday"/>
+        <result property="sex" column="sex"/>
+        <result property="address" column="address"/>
+        
+        <collection property="accounts" ofType="account">
+            <id property="id" column="aid"></id>
+            <result property="uid" column="id"></result>
+            <result property="money" column="money"></result>
+        </collection>
+        
+        <collection property="roles" ofType="role">
+            <id property="roleId" column="rid"></id>
+            <result property="roleName" column="role_name"></result>
+            <result property="roleDesc" column="role_desc"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="findAll" resultMap="userMap">
+          SELECT u.id id, u.`username` username , u.`birthday` birthday ,
+           u.`sex` sex , u.`address` address, a.`MONEY` money, a.`ID` aid,
+           r.id rid, r.role_name role_name , r.role_desc role_desc
+           FROM USER u LEFT JOIN account a ON u.`id`= a.`UID` LEFT JOIN user_role ur
+            ON u.`id` = ur.uid LEFT JOIN role r ON ur.rid = r.id
+    </select>
+
+    <insert id="saveUser" parameterType="user">
+
+        <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
+            SELECT last_insert_id();
+        </selectKey>
+        INSERT INTO USER (username, address, sex, birthday) VALUE (#{username}, #{address}, #{sex}, #{birthday});
+    </insert>
+
+    <insert id="updateUser" parameterType="cn.gandan.domain.User">
+        UPDATE USER SET username = #{username}, address = #{address}, sex = #{sex}, birthday = #{birthday} WHERE id = #{id};
+    </insert>
+
+    <insert id="deleteUser" parameterType="Integer">
+        DELETE FROM USER WHERE id = #{id};
+    </insert>
+
+    <select id="findById" parameterType="int" resultType="cn.gandan.domain.User">
+        SELECT * FROM USER WHERE id = #{id};
+    </select>
+
+    <select id="findByUser" parameterType="String" resultType="cn.gandan.domain.User">
+        SELECT * FROM USER WHERE username LIKE #{username};
+    </select>
+
+    <select id="findTotal" resultType="int">
+        SELECT COUNT(id) FROM USER;
+    </select>
+
+    <select id="findUserByVo" parameterType="cn.gandan.domain.QueryVo" resultType="cn.gandan.domain.User">
+        SELECT * FROM USER WHERE username like #{user.username}
+    </select>
+
+    <select id="findUserByCondition" resultType="user">
+        SELECT * FROM USER
+
+        <where>
+
+            <if test="username != null">
+                AND username = #{username}
+            </if>
+
+            <if test="sex != null">
+                AND sex = #{sex}
+            </if>
+
+        </where>
+
+    </select>
+
+    <!-- 传入参数的时候注意判断参数是否有值 -->
+    <select id="findUserByIds" parameterType="queryvo" resultType="user">
+        SELECT  * FROM USER
+        <where>
+            <if test="ids != null and ids.size()>0">
+                <foreach collection="ids" open="and id in(" close=")" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
+
+</mapper>
