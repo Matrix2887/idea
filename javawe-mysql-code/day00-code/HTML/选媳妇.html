@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <style>
+        #div{
+            border: 1px solid red;
+            width: 400px;
+            height: 200px;
+            float: right;
+        }
+    </style>
+
+    <script>
+        var arr = new Array();
+        arr[0] = "4.美女/2.jpg";
+        arr[1] = "4.美女/4.jpg";
+        arr[2] = "4.美女/5.jpg";
+        arr[3] = "4.美女/6.jpg";
+        arr[4] = "4.美女/21.jpg";
+        arr[5] = "4.美女/22.jpg";
+        arr[6] = "4.美女/23.jpg";
+        arr[7] = "4.美女/24.jpg";
+        arr[8] = "4.美女/25.jpg";
+        arr[9] = "4.美女/79.jpg";
+        arr[10] = "4.美女/80.jpg";
+        arr[11] = "4.美女/81.jpg";
+
+        var num = 0;
+        var index = 7;
+        var div;
+        var picture;
+
+        function start() {
+            picture = document.getElementById("picture");
+            div = document.getElementById("div");
+            setInterval(AOA,100);
+        }
+
+        function AOA() {
+            index = Math.floor(Math.random()*arr.length);
+            picture.src = arr[index];
+        }
+
+        function learn() {
+            num++;
+            if(num>=5){
+                num = 0;
+            }
+            var img = document.createElement("img");
+            img.setAttribute("src",arr[index]);
+            img.setAttribute("width","192px");
+            img.setAttribute("height","108px");
+            div.appendChild(img);
+        }
+
+    </script>
+
+</head>
+<body onload="start()">
+
+    <input type="text" placeholder="请输入喜欢的类型"><br>
+    <input type="button" value="like" id="button" onclick="learn()"><br>
+    <img src="4.美女/24.jpg" width="192px" height="108px" id="picture">
+    <div id="div"></div>
+
+</body>
+</html>

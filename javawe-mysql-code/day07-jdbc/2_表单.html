@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!--form: 用于定义表单的.可以定义一个范围-->
+    <!--范围代表采集用户数据的范围-->
+    <!--action：指定提交数据的URL-->
+    <!--method：指定提交方式-->
+    <!--一共7种,2种比较常用-->
+    <!--get:
+            1.请求参数会在地址栏中显示,会封装到请求行中(HTTP协议之后讲解)
+            2.请求参数大小是有限制的
+            3.不太安全-->
+    <!--post
+            1.请求参数不会在地址栏中显示,会封装在请求体中(HTTP协议之后讲解)
+            2.请求参数大小没有限制
+            3.较为安全-->
+    <!--表单中的数据要想被提交:必须指定其name属性-->
+
+    <!--type="text" 默认值-->
+<form action="#" method="get">
+    <label for="user">盛利</label>:<input id="user" type="text" name="username" placeholder="爱盛利"><br/>
+    爆米花:<input type="password" name="password" placeholder="爆米花"><br/>
+    <!--注意:1.要想让多个单选框实现单选的效果,则多个单选框的name属性值必须一样
+            2.一般会给每一个单选框提供value属性,指定其中被选中后提交的值
+            3.checked属性,可以指定默认值-->
+    爱:<input type="radio" name="like" value="盛利" checked>盛利
+        <input type="radio" name="love" value="爆米花">爆米花<br/>
+    爱好:<input type="checkbox" name="hobby" value="盛利" checked="checked">盛利
+        <input type="checkbox" name="hobby" value="爆米花">爆米花
+        <input type="checkbox" name="hobby" value="王乐">王乐<br/>
+    盛利:<input type="file" name="file"><br/>
+    隐藏域:<input type="hidden" name="id" value="盛利"><br/>
+
+    取色器:<input type="color" name="color"><br/>
+    生日:<input type="date" name="date"><br/>
+    生日:<input type="datetime-local" name="datel"><br/>
+    邮箱:<input type="email" name="email"><br/>
+    年龄:<input type="number" name="age"><br/>
+
+    爱:<select name="love">
+        <option>爱</option>
+        <option value="1">爱盛利</option>
+        <option value="2">爱爆米花</option>
+
+    </select>
+    <br/>
+
+    爱:<textarea cols="20" rows="5" name="love"></textarea>
+    <br/>
+    <!--按钮
+        1.submit提交按钮
+        2.button普通按钮
+        3.image:图片提交按钮 src属性指定图片的路径-->
+    <input type="submit" value="盛利"><br/>
+    <input type="button" value="盛利"><br/>
+    <!--<input type="image" src>-->
+
+
+</form>
+
+
+</body>
+</html>

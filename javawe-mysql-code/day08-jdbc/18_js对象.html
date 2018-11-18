@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <script>
+        /*
+            Math:数学
+                1.创建:
+                    特点:Math对象不用创建,直接使用.Math.方法名();
+                2.方法:
+                    random():返回 0 ~ 1之间的随机数 含0不含1
+                3.属性:
+                    PI
+         */
+        // document.write(Math.PI + "<br>")
+        // document.write(Math.random() + "<br>")
+
+
+        function number() {
+            var n = Math.random() * 100;
+            var m = Math.ceil(n);
+            return m;
+        }
+        var n = number();
+        document.write(n + "<br>");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

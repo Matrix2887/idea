@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <script>
+        /*
+        Global
+            1.特点:全局对象,这个Global中封装的方法不需要对象就可以直接调用. 方法名();
+            2.方法
+                encodeURI():uri编码
+                decodeURI():uri解码
+
+                编码的范围更多把字母,字符编码
+                encodeURIComponent():uri编码
+                decodeURIComponent():uri解码
+
+
+            3.parseInt():将字符串转为数字
+                逐一判断每一个字符是否是数字,直到不是数字为止,将前边数字部分转为number
+
+            4.isNaN():判断一个值是否是NaN
+                NaN六亲不认,连自己都不认.  NaN参与的==比较全部为false
+            5.eval():将 JavaScript 字符串,并把它作为脚本代码来执行
+         */
+
+        var str = "我爱盛利";
+        var encode = encodeURI(str);
+        document.write(encode + "<br>")
+        var s = decodeURI(encode);
+        document.write(s + "<br>")
+
+        var str1 = "我爱盛利";
+        var encode1 = encodeURIComponent(str);
+        document.write(encode1 + "<br>")
+        var s1 = decodeURIComponent(encode);
+        document.write(s1 + "<br>")
+
+        var str = "aa123aa";
+        var number = parseInt(str);
+        // alert(number + "<br>")
+
+
+        var a = "aaa";
+        document.write(a==NaN  + "<br>")
+        document.write(isNaN(a) + "<br>")
+
+        var jscode = "alert(123)";
+        eval(jscode);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

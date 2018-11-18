@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+
+
+
+</head>
+<body>
+
+    <input id="open" type="button" value="盛利">
+    <input id="close" type="button" value="爆米花">
+
+    <script>
+        /*
+        Window:窗口对象
+            1.创建
+            2.方法
+                与弹出框有关的方法;
+                    alert()显示带有一段消息和一个确认按钮的警告框
+                    confirm()显示带有一段消息以及确认按钮和取消按钮的对话框
+                        如果用户点击确定按钮 则方法返回true
+                        如果用户点击取消按钮 则方法返回false
+                    prompt()显示可提示用户输入的对话框
+                        返回值:获取用户输入的值
+                与打开关闭有关的方法:
+                    close()关闭浏览器窗口
+                        谁调用我,我关谁
+                    open()打开一个新的浏览器窗口
+
+                与定时器有关的方法
+                    setTimeout() 在指定的毫秒数后调用函数或计算表达式
+                        参数:
+                            js代码或者方法对象
+                            毫秒值
+                            返回值:唯一标识,用于取消定时器
+                    clearTimeout() 取消由setTimeout()方法设置的timeout
+
+                    setInterval() 按照指定的周期(以毫秒计)来调用函数或计算机表达式
+                       参数:
+                            js代码或者方法对象
+                            毫秒值
+                        返回值:唯一标识,用于取消定时器
+                    clearInterval() 取消有setInterval()设置的 timeout
+
+
+            3.属性
+                1.获取其他BOM对象:
+                    history
+                    location
+                    Navigator
+                    Screen
+                2.获取DOM对象
+                    document
+            4.特点
+                Window对象不需要创建可以直接使用 window使用 window.方法名();
+                window引用可以省略 方法名();
+         */
+        // alert("爱盛利");
+        // window.alert("超爱盛利");
+
+        // var flag = confirm("我爱盛利");
+        //
+        // if(flag){
+        //     alert("爱盛利");
+        // }else{
+        //     alert("爱爆米花");
+        // }
+
+
+        // var s = prompt("我爱盛利");
+        // alert(s);
+
+        // var id = setTimeout(fun,3000);
+        // clearTimeout(id);
+        // function fun() {
+        //     alert('盛利~~')
+        // }
+        //
+        // var id = setInterval(fun,2000);
+        // clearInterval(id);
+
+        var h1 = window.history;
+        var h2 = history;
+
+        alert(h1);
+        alert(h2);
+
+        var open = window.document.getElementById("open");
+        alert(open);
+
+
+    </script>
+</body>
+</html>

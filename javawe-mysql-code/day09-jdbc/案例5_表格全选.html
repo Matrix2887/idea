@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>表格全选</title>
+    <style>
+        table{
+            border: 1px solid;
+            width: 500px;
+            margin-left: 30%;
+        }
+
+        td,th{
+            text-align: center;
+            border: 1px solid;
+        }
+        div{
+            margin-top: 10px;
+            margin-left: 30%;
+        }
+
+
+        .tdover{background-color: red;}
+
+        /*.tdout{background-color: white;}*/
+
+        .overth{background-color: red;}
+
+        /*.outth{background-color: white;}*/
+
+        .over{background-color: darkorange;}
+
+        .out{background-color: white;}
+
+
+    </style>
+
+
+    <script>
+        window.onload = function () {
+            document.getElementById("selectAll").onclick = function () {
+                var cds = document.getElementsByName("cd");
+                for(var i = 0; i < cds.length ; i++){
+                    cds[i].checked = true;
+                }
+            }
+
+            document.getElementById("unSelectAll").onclick = function () {
+                var cds = document.getElementsByName("cd");
+                for(var i = 0; i < cds.length; i++){
+                    cds[i].checked = false;
+                }
+            }
+
+            document.getElementById("selectRev").onclick = function () {
+                var cds = document.getElementsByName("cd");
+                for(var i = 0; i < cds.length; i++){
+                    cds[i].checked = !cds[i].checked;
+                }
+            }
+
+        /*    document.getElementsByName("cd")[0].onclick = function () {
+                var cds = document.getElementsByName("cd");
+                for(var i = 1; i < cds.length; i++){
+                    cds[i].checked = cds[0].checked;
+                }
+            }*/
+
+        document.getElementById("firstcb").onclick = function () {
+            var firstcb = document.getElementById("firstcb");
+            var cds = document.getElementsByName("cd");
+            for(var i = 0; i < cds.length; i++){
+                cds[i].checked = firstcb.checked;
+            }
+        }
+
+        var trs = document.getElementsByTagName("tr");
+            for(var i = 0; i < trs.length; i++){
+                trs[i].onmouseover = function () {
+                    this.className = "over";
+                }
+
+                trs[i].onmouseout = function () {
+                    this.className = "out";
+                }
+            }
+
+
+        var tds = document.getElementsByTagName("td");
+            for(var j = 0; j < tds.length; j++){
+                tds[j].onmouseover = function () {
+                    this.className = "tdover";
+                }
+
+                tds[j].onmouseout = function () {
+                    this.className = "tdout";
+                }
+            }
+
+            var ths = document.getElementsByTagName("th");
+            for(var h = 0; h < ths.length; h++){
+                ths[h].onmouseover = function () {
+                    this.className = "overth";
+                }
+
+                ths[h].onmouseout = function () {
+                    this.className = "outth";
+                }
+            }
+
+
+        }
+
+
+    </script>
+
+
+    
+
+</head>
+<body>
+
+<table>
+    <caption>学生信息表</caption>
+    <tr>
+        <th><input type="checkbox" name="cd" id="firstcb"></th>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="cd"></td>
+        <td>1</td>
+        <td>令狐冲</td>
+        <td>男</td>
+        <td><a href="javascript:void(0);">删除</a></td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="cd"></td>
+        <td>2</td>
+        <td>任我行</td>
+        <td>男</td>
+        <td><a href="javascript:void(0);">删除</a></td>
+    </tr>
+
+    <tr>
+        <td><input type="checkbox" name="cd"></td>
+        <td>3</td>
+        <td>岳不群</td>
+        <td>?</td>
+        <td><a href="javascript:void(0);">删除</a></td>
+    </tr>
+
+</table>
+<div>
+    <input type="button" id="selectAll" value="全选">
+    <input type="button" id="unSelectAll" value="全不选">
+    <input type="button" id="selectRev" value="反选">
+</div>
+</body>
+</html>

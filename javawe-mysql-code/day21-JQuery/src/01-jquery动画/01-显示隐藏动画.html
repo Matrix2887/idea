@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        // show hide
+
+        // 默认
+    /*    function showFn() {
+            $("#showDiv").show(1000,"swing");
+        };
+
+        function hideFn() {
+            $("#showDiv").hide(1000,"linear");
+        };
+
+        function toggleFn() {
+            $("#showDiv").toggle(1000,"linear");
+        };*/
+
+
+    // 滑动
+  /*      function showFn() {
+            $("#showDiv").slideUp(1000,"swing");
+        };
+
+        function hideFn() {
+            $("#showDiv").slideDown(1000,"linear");
+        };
+
+        function toggleFn() {
+            $("#showDiv").slideToggle(1000,"linear");
+        };
+*/
+
+
+  // 淡入淡出
+        function showFn() {
+            $("#showDiv").fadeIn(1000,"swing");
+        };
+
+        function hideFn() {
+            $("#showDiv").fadeOut(1000,"linear");
+        };
+
+        function toggleFn() {
+            $("#showDiv").fadeToggle(1000,"linear");
+        };
+
+    </script>
+</head>
+<body>
+<input type="button" value="点击按钮显示div" onclick="showFn()">
+<input type="button" value="点击按钮隐藏div" onclick="hideFn()">
+<input type="button" value="点击按钮切换div显示和隐藏" onclick="toggleFn()">
+
+<div id="showDiv" style="width:300px;height:300px;background:pink">
+    div显示和隐藏
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+
+    <script>
+        window.onload = function () {
+            var img = document.getElementById("check");
+            img.onclick = function () {
+                var date = new Date().getTime();
+
+                img.src = "/day15/checkCode?" + date;
+            }
+
+            var change = document.getElementById("change");
+            change.onclick = function () {
+                var date = new Date().getTime();
+                img.src = "/day15/checkCode?" + date;
+            }
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+    <img id="check" src="/day15/checkCode"/>
+    <a id="change" href="javascript:void(0);">眼瞎了?换一张</a>
+
+</body>
+</html>

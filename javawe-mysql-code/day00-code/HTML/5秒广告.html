@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>AOA</title>
+</head>
+<body>
+
+    <div >
+        <img id="img" src="">
+    </div>
+
+<script>
+    var second = 0;
+    function time() {
+        second++;
+        if(second>=3){
+            var img = document.getElementById("img");
+            img.src = "./AOA/AOA.jpg";
+        }
+    }
+    setInterval(time,1000);
+
+
+
+
+</script>
+</body>
+</html>

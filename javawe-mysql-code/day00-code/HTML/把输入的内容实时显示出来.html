@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <style>
+        #div{
+
+            width: 100%;
+            height: 200px;
+            background-color: orange;
+            border: 1px solid orange;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+    <input id="input" name="" value="" maxlength="" type="text" placeholder="请输文字" onkeyup="fun()"/>
+
+    <div id="div"></div>
+
+    <script>
+        function fun() {
+            var input = document.getElementById("input").value;
+            var div = document.getElementById("div");
+            div.innerHTML = input;
+        }
+    </script>
+</body>
+</html>

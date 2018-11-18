@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+
+    <script>
+        // 定义数组：二维数组： 弱类型
+        var arrs = new Array(5); //创建一个数组
+
+        //给这个数组里面添加数据,这个数据是一维数组
+        arrs[0] = new Array("杭州市","绍兴市","温州市","义乌市","嘉兴市");
+        arrs[1] = new Array("南京市","苏州市","扬州市","无锡市");
+        arrs[2] = new Array("武汉市","襄阳市","荆州市","宜昌市","恩施");
+        arrs[3] = new Array("石家庄市","唐山市","保定市","邢台市","廊坊市");
+        arrs[4] = new Array("长春市","吉林市","四平市","延边市");
+
+      /*  arrs[0][0] = new Array("杭州市","1","2","3");
+        arrs[0][1] = new Array("绍兴市","1","2","3");
+        arrs[0][2] = new Array("温州市","1","2","3");
+        arrs[0][3] = new Array("义乌市","1","2","3");
+        arrs[0][4] = new Array("嘉兴市","1","2","3");
+        arrs[1][0] = new Array("南京市","1","2","3");
+        arrs[1][1] = new Array("苏州市","1","2","3");
+        arrs[1][2] = new Array("扬州市","1","2","3");
+        arrs[1][3] = new Array("无锡市","1","2","3");
+        arrs[2][0] = new Array("武汉市","1","2","3");
+        arrs[2][1] = new Array("襄阳市","1","2","3");
+        arrs[2][2] = new Array("荆州市","1","2","3");
+        arrs[2][3] = new Array("宜昌市","1","2","3");
+        arrs[2][4] = new Array("恩施","1","2","3");
+        arrs[3][0] = new Array("石家庄市","1","2","3");
+        arrs[3][1] = new Array("唐山市","1","2","3");
+        arrs[3][2] = new Array("保定市","1","2","3");
+        arrs[3][3] = new Array("邢台市","1","2","3");
+        arrs[3][4] = new Array("廊坊市","1","2","3");
+        arrs[4][0] = new Array("长春市","1","2","3");
+        arrs[4][1] = new Array("吉林市","1","2","3");
+        arrs[4][2] = new Array("四平市","1","2","3");
+        arrs[4][3] = new Array("延边市","1","2","3");
+*/
+      var towns = new Array(23);
+        towns[0] = new Array("杭州市","1","2","3");
+        towns[1] = new Array("绍兴市","1","2","3");
+        towns[2] = new Array("温州市","1","2","3");
+        towns[3] = new Array("义乌市","1","2","3");
+        towns[4] = new Array("嘉兴市","1","2","3");
+        towns[5] = new Array("南京市","1","2","3");
+        towns[6] = new Array("苏州市","1","2","3");
+        towns[7] = new Array("扬州市","1","2","3");
+        towns[8] = new Array("无锡市","1","2","3");
+        towns[9] = new Array("武汉市","1","2","3");
+        towns[10] = new Array("襄阳市","1","2","3");
+        towns[11] = new Array("荆州市","1","2","3");
+        towns[12] = new Array("宜昌市","1","2","3");
+        towns[13] = new Array("恩施","1","2","3");
+        towns[14] = new Array("石家庄市","1","2","3");
+        towns[15] = new Array("唐山市","1","2","3");
+        towns[16] = new Array("保定市","1","2","3");
+        towns[17] = new Array("邢台市","1","2","3");
+        towns[18] = new Array("廊坊市","1","2","3");
+        towns[19] = new Array("长春市","1","2","3");
+        towns[20] = new Array("吉林市","1","2","3");
+        towns[21] = new Array("四平市","1","2","3");
+        towns[22] = new Array("延边市","1","2","3");
+        var num = 0;
+        function changeCity(value){
+            // 获得到选中的省份的信息.
+            var city = document.getElementById("city"); //获取city节点的元素控制权
+
+            city.options.length = 0;  //数据清空
+
+            // alert(value);
+            for(var i= 0 ;i< arrs.length;i++){
+                if(value == i){
+                    // 获得所有的市的信息.
+                    for(var j=0;j<arrs[i].length;j++){
+                        // alert(arrs[i][j]);
+                        // 创建元素：
+                        var opEl = document.createElement("option");
+                        opEl.setAttribute("value",num++);
+                        // 创建文本节点:
+                        var textNode = document.createTextNode(arrs[i][j]);
+                        // 将文本的内容添加到option元素中.
+                        opEl.appendChild(textNode);
+                        // 将option的元素添加到第二个列表中.
+                        city.appendChild(opEl);
+
+
+
+                }
+            }
+            }
+        }
+
+       function changeTown(value) {
+            var town = document.getElementById("town");
+
+            town.options.length = 0;
+
+            for(var i= 0 ;i< towns.length;i++) {
+                if (value == i) {
+                    // 获得所有的市的信息.
+                    for (var j = 0; j < towns[i].length; j++) {
+                        // alert(arrs[i][j]);
+                        // 创建元素：
+                        var oo = document.createElement("option");
+                        // 创建文本节点:
+                        var textNode = document.createTextNode(towns[i][j]);
+                        // 将文本的内容添加到option元素中.
+                        oo.appendChild(textNode);
+                        // 将option的元素添加到第二个列表中.
+                        town.appendChild(oo);
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <select id="province" name="province" onchange="changeCity(this.value)">
+        <option value="">-请选择-</option>
+        <option value="0">浙江省</option>
+        <option value="1">江苏省</option>
+        <option value="2">湖北省</option>
+        <option value="3">河北省</option>
+        <option value="4">吉林省</option>
+    </select>
+
+    <select id="city" name="city" onchange="changeTown(this.value)">
+        <option value="">-请选择-</option>
+    </select>
+
+    <select id="town" name="town">
+        <option value="">-请选择-</option>
+    </select>
+</body>
+</html>

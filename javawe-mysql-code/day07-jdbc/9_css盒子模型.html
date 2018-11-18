@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <style>
+        div{
+            border: 1px solid red;
+        }
+        .div1{
+            width: 100px;
+            height: 100px;
+            /*外边距*/
+            /*margin: 50px;*/
+        }
+        .div2{
+            width: 200px;
+            height: 200px;
+            /*内边距*/
+            /*默认情况下会影响盒子大小
+                设置盒子的属性,让width和height就是盒子的大小
+            */
+            box-sizing: border-box;
+            /*padding: 50px;*/
+
+        }
+        div{
+            width: 100px;
+        }
+        .div3{
+            float: left;
+        }
+        .div4{
+            float: left;
+        }
+        .div5{
+            float: right;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    <div class="div2">
+        <div class="div1"></div>
+    </div>
+<div class="div3">爱</div>
+<div class="div4">盛</div>
+<div class="div5">利</div>
+
+</body>
+</html>

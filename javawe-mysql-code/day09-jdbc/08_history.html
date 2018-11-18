@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+</head>
+<body>
+
+    <input type="button" id="btn" value="盛利">
+    <a href="09_轮播图.html">爆米花</a>
+    <input type="button" id="forward" value="盛酱">
+
+
+
+<script>
+    var btn = document.getElementById("btn");
+    btn.onclick = function () {
+        var length = history.length;
+        alert(length);
+    }
+
+    var forward = document.getElementById("forward");
+    forward.onclick = function () {
+        // history.forward();
+        history.go(1)
+    }
+
+
+</script>
+</body>
+</html>

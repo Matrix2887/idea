@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background: url("img/register_bg.png") no-repeat center;
+        }
+        .rg_layout{
+            width: 900px;
+            height: 500px;
+            border: 7px solid #EEEEEE;
+            background-color: white;
+            margin: auto;
+            /*padding: 15px;*/
+            margin-top: 70px;
+        }
+
+        .rg_left{
+            /*border: 1px solid red;*/
+            float: left;
+            margin: 15px;
+        }
+        .rg_left > p:first-child{
+            color: #FFD026;
+            font-size: 20px;
+        }
+        .rg_left > p:last-child{
+            color: #A6A6A6;
+            font-size: 20px;
+        }
+
+
+
+        .rg_center{
+            /*border: 1px solid red;*/
+            float: left;
+            padding: 30px;
+            width: 500px;
+        }
+
+
+
+
+        .rg_right{
+            /*border: 1px solid red;*/
+            float: right;
+            margin: 15px;
+        }
+        .rg_right > p:first-child{
+            font-size: 15px;
+        }
+        .rg_right p a {
+            color: darkorange;
+        }
+        .td_left{
+            width: 100px;
+            text-align: right;
+            height: 45px;
+            font-family: "迷你简丫丫";
+        }
+        .td_right{
+            padding-left: 50px ;
+        }
+        .td_right > a{
+            font-family: "迷你简丫丫";
+            color: yellowgreen;
+        }
+        #username,#password,#email,#name,#tel,#birthday{
+            width: 251px;
+            height: 32px;
+            border: 1px solid #A6A6A6;
+            /*设置边框圆角*/
+            border-radius: 5px;
+            padding-left: 10px;
+
+        }
+        #checkcode{
+            width: 140px;
+            height: 32px;
+            border: 1px solid #A6A6A6;
+            /*设置边框圆角*/
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        #img_check{
+            height: 32px;
+            vertical-align: middle;
+        }
+        #btn_sub{
+            width: 140px;
+            height: 32px;
+            border-radius: 5px;
+            background-color: #FFD026;
+            border: 1px solid #FFD026;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="rg_layout">
+        <div class="rg_left">
+            <p>新用户注册</p>
+            <p>USER REGISTER</p>
+        </div>
+        <div class="rg_center">
+            <div class="rg_form">
+                <form action="#" method="get">
+                    <table>
+                        <tr>
+                            <td class="td_left"><label for="username">昵称</label></td>
+                            <td class="td_right"><input type="text" name="username" id="username" placeholder="绞尽脑汁给自己起个昵称吧"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label for="password">密码</label></td>
+                            <td class="td_right"><input type="password" name="password" id="password" placeholder="请输入复杂到自己都会忘的密码"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label for="email">Email</label></td>
+                            <td class="td_right"><input type="email" name="email" id="email" placeholder="请输入带着你名字拼英的邮箱"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label for="name">姓名</label></td>
+                            <td class="td_right"><input type="text" name="name" id="name" placeholder="请输入被自己吐槽无数次的姓名"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label for="tel">手机号</label></td>
+                            <td class="td_right"><input type="text" name="tel" id="tel" placeholder="看看你记没记住手机号"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label>性别</label></td>
+                            <td class="td_right" font="迷你简丫丫">
+                                <input type="radio" name="gender" value="male" > 男
+                                <input type="radio" name="gender" value="female"> 女
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label for="birthday">出生日期</label></td>
+                            <td class="td_right"><input type="text" name="birthday" id="birthday" placeholder="请输入你第一次听到雷声的日子"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="td_left"><label for="checkcode" >验证码</label></td>
+                            <td class="td_right"><input type="text" name="checkcode" id="checkcode" placeholder="  看看你眼瞎没">
+                                <img id="img_check" src="img/verify_code.jpg"><br>
+                                <a href="#">眼瞎了?换一张</a>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td colspan="2" align="center"><input type="submit" id="btn_sub" value="不看协议直接注册"></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+        <div class="rg_right">
+            <p>以有账号?<a href="#">立即登陆</a></p>
+        </div>
+    </div>
+
+
+</body>
+</html>

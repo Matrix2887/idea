@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+
+</head>
+<body>
+
+    <input type="button" id="btn" value="盛利">
+    <input type="button" id="bao" value="爆米花">
+    <script>
+
+        // reload方法,定义一个按钮,点击按钮,刷新当前页面
+        // 1.获取按钮
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            location.reload();
+        }
+
+        // 获取href
+        var href = location.href;
+        // alert(href);
+        var bao = document.getElementById("bao");
+        // 点击按钮,去访问爆米花
+        bao.onclick = function () {
+            location.href = "https://www.baomihua.cn";
+        }
+    </script>
+</body>
+</html>

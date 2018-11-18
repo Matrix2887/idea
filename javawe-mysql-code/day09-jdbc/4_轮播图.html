@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>盛利</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            float: right;
+            border: 1px solid red;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <div></div>
+    <img id="img" src="img/banner_3.jpg" width="100%">
+    <script>
+        /*
+            分析
+                1.在页面上使用img标签展示图片
+                2.定义一个方法,修改图片对象的src属性
+                3.定义一个定时器,每隔3秒调用方法一次
+         */
+        var num = 1;
+        function fun() {
+            num++;
+            if(num > 3){
+                num = 1;
+            }
+            var img = document.getElementById("img");
+            img.src = "img/banner_"+ num +".jpg";
+        }
+
+        setInterval(fun,100);
+
+
+    </script>
+</body>
+</html>
