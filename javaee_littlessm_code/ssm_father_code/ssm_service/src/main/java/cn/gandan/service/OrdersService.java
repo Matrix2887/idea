@@ -8,4 +8,6 @@ public interface OrdersService {
 
     abstract List<Orders> findAll(int page, int size) throws Exception;
 
+    abstract Orders findById(String ordersId) throws Exception;
+
 }

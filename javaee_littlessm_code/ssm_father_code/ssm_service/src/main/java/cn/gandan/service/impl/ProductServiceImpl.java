@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Service
@@ -23,7 +24,10 @@ public class ProductServiceImpl implements ProductService {
         return "测试成功";
     }
 
+
+
     @Override
+    @RolesAllowed("ROLE_ADMIN")
     public List<Product> findAll() throws Exception {
         System.out.println("查询所有执行了");
         return productDao.findAll();
