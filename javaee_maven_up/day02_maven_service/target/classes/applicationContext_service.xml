@@ -17,8 +17,9 @@
 			    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="cn.gandan">
-
     </context:component-scan>
+
+    <import resource="classpath:applicationContext_dao.xml"/>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
