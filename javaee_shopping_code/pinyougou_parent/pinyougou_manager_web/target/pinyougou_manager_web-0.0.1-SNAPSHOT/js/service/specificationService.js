@@ -31,7 +31,7 @@ app.service('specificationService',function($http){
 	};
 
 	// 下拉列表
-	$scope.selectOptionList=function () {
+	this.selectOptionList=function () {
 		return $http.get('../specification/selectOptionList.do');
     }
 

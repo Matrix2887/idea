@@ -36,6 +36,13 @@ app.controller('baseController', function ($scope) {
         }
     };
 
+    // json转字符
+    /**
+     * 转成的对象是一个List<Map>集合, 在每个集合中有一个map根据map的key --> text 取出数据
+     * @param jsonString
+     * @param key
+     * @returns {string}
+     */
     $scope.jsonToString=function(jsonString,key){
 
         var json= JSON.parse(jsonString);
