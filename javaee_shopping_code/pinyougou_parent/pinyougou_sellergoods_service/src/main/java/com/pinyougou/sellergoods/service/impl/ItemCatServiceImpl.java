@@ -11,6 +11,8 @@ import com.pinyougou.pojo.TbItemCatExample.Criteria;
 import com.pinyougou.sellergoods.service.ItemCatService;
 
 import entity.PageResult;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
@@ -18,10 +20,14 @@ import entity.PageResult;
  *
  */
 @Service
+@Transactional
 public class ItemCatServiceImpl implements ItemCatService {
 
 	@Autowired
 	private TbItemCatMapper itemCatMapper;
+
+	@Autowired
+	private RedisTemplate redisTemplate;
 	
 	/**
 	 * 查询全部
@@ -87,7 +93,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		Criteria criteria = example.createCriteria();
 		
 		if(itemCat!=null){			
-						if(itemCat.getName()!=null && itemCat.getName().length()>0){
+			if(itemCat.getName()!=null && itemCat.getName().length()>0){
 				criteria.andNameLike("%"+itemCat.getName()+"%");
 			}
 	
@@ -96,5 +102,27 @@ public class ItemCatServiceImpl implements ItemCatService {
 		Page<TbItemCat> page= (Page<TbItemCat>)itemCatMapper.selectByExample(example);		
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+	/**
+	 *
+	 * @param parentId
+	 * @return
+	 */
+	@Override
+	public List<TbItemCat> findByParent(Long parentId) {
+
+		TbItemCatExample example = new TbItemCatExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andParentIdEqualTo(parentId);
+
+		// 缓存分类列表
+		List<TbItemCat> tbItemCats = findAll();
+		for (TbItemCat tbItemCat : tbItemCats) {
+			redisTemplate.boundHashOps("itemCat").put(tbItemCat.getName(), tbItemCat.getTypeId());
+		}
+        System.out.println("itemCat-->in storage");
+
+		return itemCatMapper.selectByExample(example);
+	}
+
 }

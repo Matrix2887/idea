@@ -1,4 +1,7 @@
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\service\UserDetailsServiceImpl.java
+D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\shop\controller\TypeTemplateController.java
+D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\shop\controller\UploadController.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\shop\controller\LoginController.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\shop\controller\SellerController.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\shop\controller\GoodsController.java
+D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_shop_web\src\main\java\com\pinyougou\shop\controller\ItemCatController.java

@@ -11,6 +11,7 @@ import com.pinyougou.pojo.TbGoodsDescExample.Criteria;
 import com.pinyougou.sellergoods.service.GoodsDescService;
 
 import entity.PageResult;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
@@ -18,6 +19,7 @@ import entity.PageResult;
  *
  */
 @Service
+@Transactional
 public class GoodsDescServiceImpl implements GoodsDescService {
 
 	@Autowired
@@ -55,6 +57,7 @@ public class GoodsDescServiceImpl implements GoodsDescService {
 	 */
 	@Override
 	public void update(TbGoodsDesc goodsDesc){
+
 		goodsDescMapper.updateByPrimaryKey(goodsDesc);
 	}	
 	

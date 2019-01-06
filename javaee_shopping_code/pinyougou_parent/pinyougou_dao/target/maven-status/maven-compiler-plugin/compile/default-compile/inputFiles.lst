@@ -8,6 +8,7 @@ D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyo
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbItemCatMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbPayLogMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbFreightTemplateMapper.java
+D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbSeckillOrderMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbTypeTemplateMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbItemMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbUserMapper.java
@@ -15,6 +16,7 @@ D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyo
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbBrandMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbCitiesMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbProvincesMapper.java
+D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbSeckillGoodsMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbGoodsMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbSpecificationOptionMapper.java
 D:\A\javaee_shopping_code\pinyougou_parent\pinyougou_dao\src\main\java\com\pinyougou\mapper\TbGoodsDescMapper.java

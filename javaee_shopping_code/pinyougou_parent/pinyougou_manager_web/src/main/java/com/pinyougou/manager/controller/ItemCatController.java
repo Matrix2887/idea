@@ -89,7 +89,8 @@ public class ItemCatController {
 	 * @return
 	 */
 	@RequestMapping("/delete")
-	public Result delete(Long [] ids){
+	public Result delete(Long[] ids){
+        System.out.println("ids.length --> "+ids.length);
 		try {
 			itemCatService.delete(ids);
 			return new Result(true, "删除成功"); 
@@ -101,7 +102,6 @@ public class ItemCatController {
 	
 		/**
 	 * 查询+分页
-	 * @param brand
 	 * @param page
 	 * @param rows
 	 * @return
@@ -109,6 +109,11 @@ public class ItemCatController {
 	@RequestMapping("/search")
 	public PageResult search(@RequestBody TbItemCat itemCat, int page, int rows  ){
 		return itemCatService.findPage(itemCat, page, rows);		
+	}
+
+	@RequestMapping("/findByParentId")
+	public List<TbItemCat> findByParentId(Long parentId){
+		return itemCatService.findByParent(parentId);
 	}
 	
 }

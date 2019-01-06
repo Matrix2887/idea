@@ -1,5 +1,12 @@
 package com.pinyougou.sellergoods.service.impl;
 import java.util.List;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.pinyougou.mapper.TbSpecificationOptionMapper;
+import com.pinyougou.pojo.TbSpecificationOption;
+import com.pinyougou.pojo.TbSpecificationOptionExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.github.pagehelper.Page;
@@ -11,6 +18,8 @@ import com.pinyougou.pojo.TbTypeTemplateExample.Criteria;
 import com.pinyougou.sellergoods.service.TypeTemplateService;
 
 import entity.PageResult;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 服务实现层
@@ -18,11 +27,18 @@ import entity.PageResult;
  *
  */
 @Service
+@Transactional
 public class TypeTemplateServiceImpl implements TypeTemplateService {
 
 	@Autowired
 	private TbTypeTemplateMapper typeTemplateMapper;
-	
+
+	@Autowired
+	private TbSpecificationOptionMapper tbSpecificationOptionMapper;
+
+	@Autowired
+	private RedisTemplate redisTemplate;
+
 	/**
 	 * 查询全部
 	 */
@@ -49,7 +65,6 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 		typeTemplateMapper.insert(typeTemplate);		
 	}
 
-	
 	/**
 	 * 修改
 	 */
@@ -87,7 +102,7 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 		Criteria criteria = example.createCriteria();
 		
 		if(typeTemplate!=null){			
-						if(typeTemplate.getName()!=null && typeTemplate.getName().length()>0){
+			if(typeTemplate.getName()!=null && typeTemplate.getName().length()>0){
 				criteria.andNameLike("%"+typeTemplate.getName()+"%");
 			}
 			if(typeTemplate.getSpecIds()!=null && typeTemplate.getSpecIds().length()>0){
@@ -101,9 +116,53 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
 			}
 	
 		}
-		
-		Page<TbTypeTemplate> page= (Page<TbTypeTemplate>)typeTemplateMapper.selectByExample(example);		
+		Page<TbTypeTemplate> page= (Page<TbTypeTemplate>)typeTemplateMapper.selectByExample(example);
+		saveToRedis();
 		return new PageResult(page.getTotal(), page.getResult());
 	}
-	
+
+	private void saveToRedis(){
+
+        List<TbTypeTemplate> tbTypeTemplates = findAll();
+        for (TbTypeTemplate tbTypeTemplate : tbTypeTemplates) {
+
+            List<Map> brandList = JSON.parseArray(tbTypeTemplate.getBrandIds(), Map.class);
+            redisTemplate.boundHashOps("brandList").put(tbTypeTemplate.getId(), brandList);
+
+            List<Map> specList = findSpecList(tbTypeTemplate.getId());
+            redisTemplate.boundHashOps("specList").put(tbTypeTemplate.getId(), specList);
+
+        }
+        System.out.println("brandList and specList in storage");
+
+    }
+
+
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	@Override
+	public List<Map> findSpecList(Long id) {
+
+		TbTypeTemplate tbTypeTemplate = typeTemplateMapper.selectByPrimaryKey(id);
+		// 需要的是spec_ids里面的表
+        /**
+         * id
+         * text
+         * options 是一个对象的集合 TbSpecificationOption
+         */
+        List<Map> list = JSON.parseArray(tbTypeTemplate.getSpecIds(), Map.class);
+        for (Map map : list) {
+            TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+            TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+            criteria.andSpecIdEqualTo(new Long( (Integer)map.get("id")));
+            List<TbSpecificationOption> options = tbSpecificationOptionMapper.selectByExample(example);
+            map.put("options", options);
+        }
+        return list;
+	}
+
 }
